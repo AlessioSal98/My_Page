@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alessio - Homepage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            background: white;
+            padding: 20px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin: 15px 0;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            padding: 5px;
+        }
+
+        .sidebar-nav a:hover {
+            color: #667eea;
+            transform: translateX(-3px);
+        }
+
+        .sidebar-nav a.active {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .nav-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid #666;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-nav a:hover .nav-dot,
+        .sidebar-nav a.active .nav-dot {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        /* Mobile sidebar toggle */
+        .sidebar-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transition: background 0.3s ease;
+        }
+
+        .sidebar-toggle:hover {
+            background: #764ba2;
+        }
+
+        /* Header Section */
+        header {
+            background: url('background.png') center/contain no-repeat;
+            background-size: 100% auto;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Description Section */
+        .description {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .description h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 1.1em;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Biography Section */
+        .biography-section {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .biography-section h2 {
+            color: #667eea;
+            margin-bottom: 40px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .biography-section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .biography-section h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .biography-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .biography-content p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .biography-content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .biography-content li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .degree-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Publications Section */
+        .publications-section {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .publications-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .publication-list {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .publication-item {
+            background: #f9f9f9;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .publication-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .publication-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .publication-authors {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .publication-venue {
+            color: #764ba2;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .publication-year {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+
+        .publication-abstract {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .publication-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: #764ba2;
+        }
+
+        /* Thesis Section */
+        .thesis-section {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .thesis-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .pdf-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .pdf-fallback {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .pdf-fallback a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background 0.3s ease;
+        }
+
+        .pdf-fallback a:hover {
+            background: #764ba2;
+        }
+
+        /* Supervised Theses Section */
+        .supervised-section {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .supervised-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .thesis-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .thesis-item {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .thesis-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .thesis-info {
+            flex: 1;
+        }
+
+        .thesis-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .thesis-author {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.95em;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #764ba2;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+
+            .sidebar {
+                top: auto;
+                bottom: 80px;
+                right: 20px;
+                transform: none;
+            }
+
+            .sidebar.mobile-hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .description h2,
+            .biography-section h2,
+            .publications-section h2,
+            .thesis-section h2,
+            .supervised-section h2 {
+                font-size: 1.5em;
+            }
+
+            .publication-title {
+                font-size: 1.1em;
+            }
+
+            .thesis-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .download-btn {
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .biography-section h3 {
+                font-size: 1.3em;
+            }
+
+            .biography-section h4 {
+                font-size: 1.1em;
+            }
+
+            .pdf-container {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar mobile-hidden">
+        <ul class="sidebar-nav">
+            <li><a href="#about" class="nav-link"><span class="nav-dot"></span>About</a></li>
+            <li><a href="#biography" class="nav-link"><span class="nav-dot"></span>Biography</a></li>
+            <li><a href="#publications" class="nav-link"><span class="nav-dot"></span>Publications</a></li>
+            <li><a href="#thesis" class="nav-link"><span class="nav-dot"></span>My Thesis</a></li>
+            <li><a href="#supervised" class="nav-link"><span class="nav-dot"></span>Supervised</a></li>
+        </ul>
+    </nav>
+
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Header with Profile -->
+    <header id="home">
+        <div class="container">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-picture">
+            <h1>Alessio Saladino</h1>
+        </div>
+    </header>
+
+    <!-- Description Section -->
+    <section class="description" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Currently enrolled in the 40th cycle of the National PhD in Artificial Intelligence at Sapienza University of Rome, under the supervision of Prof. Luca Iocchi and in international collaboration with Procter & Gamble. My current research focuses on enhancing the cognitive capabilities of robotic systems by leveraging the power of Large Language Models (LLMs). The impressive language processing abilities of modern LLMs make them valuable tools in social robotics, where they can significantly improve interaction quality by enabling robots to understand their surrounding context and make safe, coherent, and socially appropriate decisions. These cognitive functionalities can also be extended to industrial domains, allowing the integration of a cognitive architecture aimed at increasing the efficiency and productivity of industrial processes. By exploiting cognitive capabilities, a robot can adapt its behavior based on the context in which it operates. This enables the application of the same cognitive architecture across multiple domains, with only the contextual descriptions and information needing to be adjusted.</p>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section class="biography-section" id="biography">
+        <div class="container">
+            <h2>Biography</h2>
+            <div class="biography-content">
+                
+                <h3>EDUCATION</h3>
+                
+                <div class="degree-info">
+                    <h4>Bachelor's Degree</h4>
+                    <p><span class="info-label">Program:</span> Computer Science at Università degli Studi di Bari "Aldo Moro"</p>
+                    <p><span class="info-label">Final Grade:</span> 110L</p>
+                    <p><span class="info-label">Period:</span> September 2017 – December 2020</p>
+                    <p><span class="info-label">Thesis Title:</span> Social Robot and e-Health: Aphel as an Assistant for Patients in Hospital Wards</p>
+                    <p><span class="info-label">Thesis Description:</span><br>
+                    Development of an intelligent system that allows hospital patients to communicate and request support from the social robot Aphel through IoT technologies. The robot is capable of understanding the patient's needs and providing information or assistance. If necessary, the robot can remotely alert medical staff for direct intervention.</p>
+                </div>
+
+                <div class="degree-info">
+                    <h4>Master's Degree</h4>
+                    <p><span class="info-label">Program:</span> Artificial Intelligence and Robotics at Sapienza University of Rome</p>
+                    <p><span class="info-label">Final Grade:</span> 104</p>
+                    <p><span class="info-label">Period:</span> September 2021 – October 2024</p>
+                    <p><span class="info-label">Thesis Title:</span> A Novel Architecture Integrating LLM and Context-Aware Supervisors for Safe Interaction with Social Robots</p>
+                    <p><span class="info-label">Thesis Description:</span><br>
+                    Development of a cognitive architecture for human-robot interaction. The architecture enhances the robot's cognitive capabilities by leveraging information from long-term memory and the use of Supervisors that manage interaction flow. The context retrieved from long-term memory via Retrieval Augmented Generation (RAG) is processed by LLM-based supervisors, allowing the robot to act safely and appropriately in context.</p>
+                </div>
+
+                <h3>WORKING EXPERIENCES</h3>
+                
+                <div class="degree-info">
+                    <h4>Salesforce Developer Consultant at Sidea Group S.r.l.</h4>
+                    <p><span class="info-label">Period:</span> April 2021 – September 2021</p>
+                    <p><span class="info-label">Job Description:</span><br>
+                    Design, development, and maintenance of customized solutions to support business processes.</p>
+                    <p><span class="info-label">Technical skills acquired during this period include:</span></p>
+                    <ul>
+                        <li>Development of custom solutions using Apex programming language, including classes, triggers, batch processes, and scheduled jobs, with a focus on automating complex business workflows;</li>
+                        <li>Design and management of integration between Salesforce and external systems via REST and SOAP API calls, using Postman for client-server communication testing and validation;</li>
+                        <li>Use of version control tools (Git) to ensure traceability of changes and manage releases across different environments (sandbox and production);</li>
+                        <li>Full development lifecycle involvement: analysis, implementation, test classes, deployment, and post-release maintenance;</li>
+                        <li>Use of Salesforce-integrated DBMS for enterprise data management and querying;</li>
+                        <li>Development with Visual Studio Code integrated with Salesforce for local development and controlled deployment;</li>
+                        <li>Team collaboration following Agile methodologies.</li>
+                    </ul>
+                </div>
+                    <h3>DISSEMINATION</h3>
+                    
+                    <div class="degree-info">
+                    <p>During my PhD studies, I took part in outreach events aimed at a diverse audience. Below are the events I participated in:</p>
+                    
+                    <ul>
+                        
+                        
+                        <li><span class="info-label">OpenDIAG 2025:</span> Outreach event focused on guiding high school students in their university choice. I contributed by presenting a hands-on demo involving the social robot MARRtina, enhanced with the Large Language Model Minerva to demonstrate context-aware, natural human-robot interaction.</li>
+                        <li><span class="info-label">GardAI 2025:</span> Public engagement event centered on the role of Artificial Intelligence and Robotics in socially impactful scenarios. I presented a demo where the NAO and SMARRtino robots engaged in collaborative dialogue, leveraging Large Language Models to simulate autonomous inter-robot communication.</li>
+                        <li><span class="info-label">Workshop GPDP:</span> Workshop in which a simulated version of the SMARRtino robot was controlled with natural language instructions. The robot was placed in a virtual room and it was capa- ble of navigate and execute simple actions by exploiting natural language programming and reasoning throught LLMs.</li>
+                   
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="publications-section" id="publications">
+        <div class="container">
+            <h2>Publications</h2>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <div class="publication-title">A Cognitive Architecture for Embodied AI based on LLM Common-sense Knowledge</div>
+                    <div class="publication-authors">Alessio Saladino, Michele Brienza, Vincenzo Suriani, Domenico Daniele Bloisi, Luca Iocchi</div>
+                    <div class="publication-venue">International Conference on Social Robotics (ICSR)</div>
+                    <div class="publication-year">2025</div>
+                    <div class="publication-abstract">
+                        This work proposes a robot-agnostic Cognitive Architecture for Human-Robot Interaction (HRI) that allows robots to reason about their embodiment and environment to decide how to act during interactions with humans. The architecture includes a long-term memory for remembering past information and a series of modules called Supervisors that orchestrate the interaction process to ensure the robot's behavior respects security criteria depending on the domain, users, and robot embodiment. The architecture's adaptability was tested on four different robots with different skill sets, including a dialogue between NAO and SMARRtino robots reasoning about their embodiment.
+                    </div>
+                    <a href="https://iris.unibas.it/handle/11563/204559" target="_blank" class="publication-link">View Publication</a>
+                </div>
+
+                <div class="publication-item">
+                    <div class="publication-title">A Use Case of Natural Language Programming for Industrial Robots</div>
+                    <div class="publication-authors">Alessio Saladino, Luca Iocchi, Vincenzo Agostiniano, Pieter Saveyn</div>
+                    <div class="publication-venue">European Conference on Mobile Robots (ECMR)</div>
+                    <div class="publication-year">2025</div>
+                    <div class="publication-abstract">
+                        Recent advances in Large Language Models (LLMs) have enabled their use in natural language tasks across various domains, including robotics. This work explores the integration of a cognitive architecture using LLMs within an industrial context. Unlike social environments, industrial settings require robots to understand and execute complex tasks while comprehending human expert requirements and feedback expressed in natural language. The system must reason about specified constraints and avoid diverging from human-imposed goals, ultimately improving task execution efficiency in collaborative and industrial robotics.
+                    </div>
+                    <a href="https://iris.uniroma1.it/handle/11573/1750041" target="_blank" class="publication-link">View Publication</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thesis PDF Section -->
+    <section class="thesis-section" id="thesis">
+        <div class="container">
+            <h2>My Master Thesis</h2>
+
+            <div class="degree-info">
+                In my master thesis, I proposed a new framework for safely integrating Large Language Models (LLMs) with a social robot to overcome LLM limitations like hallucinations and bias, and prevent ethical/security risks. The resulting security framework enhances the robot's communication skills and interaction quality, enabling it to fluently communicate, remember past context and user information, and use that data to detect and handle dangerous situations and preserve interaction safety.
+The thesis worked as a starting point for my PhD further research.
+            </div>
+
+            <div class="pdf-container">
+                <iframe src="Tesi.pdf" type="application/pdf">
+                    <div class="pdf-fallback">
+                        <p>Your browser does not support direct PDF viewing.</p>
+                        <a href="Tesi.pdf" download>Download Thesis (PDF)</a>
+                    </div>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supervised Theses Section -->
+    <section class="supervised-section" id="supervised">
+        <div class="container">
+            <h2>Supervised Theses</h2>
+        <div class="degree-info"> 
+            In addition to my doctoral work, I have co-supervised several Master's theses related to the integration of Large Language Models with robotic systems and Human-Robot Interaction.
+These theses I have co-supervised are presented below.
+        </div>
+
+            <div class="thesis-list">
+                <div class="thesis-item">
+                    <div class="thesis-info">
+                        <div class="thesis-title">An innovative architecture for enhancing social
+robot abilities by exploiting LLM processing</div>
+                        <div class="thesis-author">Leonardo Montella</div>
+                        <div>This thesis proposes a new method to enhance human-robot communication using Large Language Models (LLMs). The system includes an innovative module for dynamic robot movement control and a facial expressions system to ensure actions and emotions are contextually appropriate, safe, and clearly understood. A key innovation is using LLMs to govern movements and expressions, including subtle "breathing" motions, making the robot an embodiment of the LLM that understands its physical presence and social status through supervised prompts. The result is a more lifelike, responsive, and engaging interaction through contextualized and expressive communication.</div>
+                    </div>
+                    <a href="supervised_thesis/Montella.pdf" class="download-btn" download>Download PDF</a>
+                </div>
+                
+                <div class="thesis-item">
+                    <div class="thesis-info">
+                        <div class="thesis-title">Active Vision for Cognitive Human-Robot Interaction
+(HRI)</div>
+                        <div class="thesis-author">Niccolò Piraino</div>
+
+                        <div>This thesis extends a proven human-robot verbal interaction framework by integrating visual capabilities to address its major limitation: a lack of real-time environmental awareness. New modules utilize real-time visual data to support the interaction, aid in understanding the robot's internal state, and identify safety violations. This extension significantly improves response accuracy regarding the environment, enhances utility in context-dependent tasks like object search, and transforms the robot into a more active agent capable of proactively gathering information or initiating contact.</div>
+                    </div>
+                    <a href="supervised_thesis/Piraino.pdf" class="download-btn" download>Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Alessio Saladino. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Highlight active section in sidebar
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Toggle sidebar on mobile
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('mobile-hidden');
+        }
+    </script>
+</body>
+</html>
