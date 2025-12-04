@@ -510,6 +510,7 @@
     <nav class="sidebar mobile-hidden">
         <ul class="sidebar-nav">
             <li><a href="#about" class="nav-link"><span class="nav-dot"></span>About</a></li>
+            <li><a href="work.html" class="nav-link"><span class="nav-dot"></span>My Work</a></li>
             <li><a href="#biography" class="nav-link"><span class="nav-dot"></span>Biography</a></li>
             <li><a href="#publications" class="nav-link"><span class="nav-dot"></span>Publications</a></li>
             <li><a href="#thesis" class="nav-link"><span class="nav-dot"></span>My Thesis</a></li>
@@ -532,7 +533,23 @@
     <section class="description" id="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>Currently enrolled in the 40th cycle of the National PhD in Artificial Intelligence at Sapienza University of Rome, under the supervision of Prof. Luca Iocchi and in international collaboration with Procter & Gamble. My current research focuses on enhancing the cognitive capabilities of robotic systems by leveraging the power of Large Language Models (LLMs). The impressive language processing abilities of modern LLMs make them valuable tools in social robotics, where they can significantly improve interaction quality by enabling robots to understand their surrounding context and make safe, coherent, and socially appropriate decisions. These cognitive functionalities can also be extended to industrial domains, allowing the integration of a cognitive architecture aimed at increasing the efficiency and productivity of industrial processes. By exploiting cognitive capabilities, a robot can adapt its behavior based on the context in which it operates. This enables the application of the same cognitive architecture across multiple domains, with only the contextual descriptions and information needing to be adjusted.</p>
+            <p>I am a second-year PhD at Sapienza University of Rome. My research focuses on integrating
+Large Language Models with robots (social and industrial), developing complex frameworks
+and cognitive architectures for human-robot interaction. The current state of my work has led
+to two publications at international conferences.
+My interest in this field began several years before starting my PhD, as I had the opportunity
+to write theses on human-robot interaction during my bachelor’s degree and increasing this
+interest during my master’s degree.
+My studies have led me to acquire several technical skills related to computer science and engi-
+neering, such as proficiency in various programming languages (Python, Java, C++, etc.) and
+advanced tools such as ROS, Docker, Robotics Simulators (Gazebo) and database manage-
+ment systems. During my master's degree, I developed several projects related to the training
+of different categories of neural networks, acquiring expertise in deep learning frameworks such
+as PyTorch. I also had the opportunity to improve my English skills as the master's degree was
+taught entirely in English.</p>
+            <p style="text-align: center; margin-top: 30px;">
+                <a href="work.html" class="publication-link" style="padding: 12px 30px; font-size: 1em;">Learn More About My Research →</a>
+            </p>
         </div>
     </section>
 
@@ -542,17 +559,18 @@
             <h2>Biography</h2>
             <div class="biography-content">
                 
+
+                <h3>CURRENT WORK</h3>
+
+                <div class="degree-info">
+                     <p>Currently enrolled in the 40th cycle of the National PhD in Artificial Intelligence at Sapienza University of Rome, under the supervision of Prof. Luca Iocchi and in international collaboration with Procter & Gamble. My current research focuses on enhancing the cognitive capabilities of robotic systems by leveraging the power of Large Language Models (LLMs). The impressive language processing abilities of modern LLMs make them valuable tools in social robotics, where they can significantly improve interaction quality by enabling robots to understand their surrounding context and make safe, coherent, and socially appropriate decisions. These cognitive functionalities can also be extended to industrial domains, allowing the integration of a cognitive architecture aimed at increasing the efficiency and productivity of industrial processes. By exploiting cognitive capabilities, a robot can adapt its behavior based on the context in which it operates. This enables the application of the same cognitive architecture across multiple domains, with only the contextual descriptions and information needing to be adjusted.</p>
+                </div>
+
+
+
                 <h3>EDUCATION</h3>
                 
-                <div class="degree-info">
-                    <h4>Bachelor's Degree</h4>
-                    <p><span class="info-label">Program:</span> Computer Science at Università degli Studi di Bari "Aldo Moro"</p>
-                    <p><span class="info-label">Final Grade:</span> 110L</p>
-                    <p><span class="info-label">Period:</span> September 2017 – December 2020</p>
-                    <p><span class="info-label">Thesis Title:</span> Social Robot and e-Health: Aphel as an Assistant for Patients in Hospital Wards</p>
-                    <p><span class="info-label">Thesis Description:</span><br>
-                    Development of an intelligent system that allows hospital patients to communicate and request support from the social robot Aphel through IoT technologies. The robot is capable of understanding the patient's needs and providing information or assistance. If necessary, the robot can remotely alert medical staff for direct intervention.</p>
-                </div>
+
 
                 <div class="degree-info">
                     <h4>Master's Degree</h4>
@@ -563,6 +581,19 @@
                     <p><span class="info-label">Thesis Description:</span><br>
                     Development of a cognitive architecture for human-robot interaction. The architecture enhances the robot's cognitive capabilities by leveraging information from long-term memory and the use of Supervisors that manage interaction flow. The context retrieved from long-term memory via Retrieval Augmented Generation (RAG) is processed by LLM-based supervisors, allowing the robot to act safely and appropriately in context.</p>
                 </div>
+
+
+                <div class="degree-info">
+                    <h4>Bachelor's Degree</h4>
+                    <p><span class="info-label">Program:</span> Computer Science at Università degli Studi di Bari "Aldo Moro"</p>
+                    <p><span class="info-label">Final Grade:</span> 110L</p>
+                    <p><span class="info-label">Period:</span> September 2017 – December 2020</p>
+                    <p><span class="info-label">Thesis Title:</span> Social Robot and e-Health: Aphel as an Assistant for Patients in Hospital Wards</p>
+                    <p><span class="info-label">Thesis Description:</span><br>
+                    Development of an intelligent system that allows hospital patients to communicate and request support from the social robot Aphel through IoT technologies. The robot is capable of understanding the patient's needs and providing information or assistance. If necessary, the robot can remotely alert medical staff for direct intervention.</p>
+                </div>
+
+                
 
                 <h3>WORKING EXPERIENCES</h3>
                 
@@ -605,7 +636,7 @@
         <div class="container">
             <h2>Publications</h2>
             <div class="publication-list">
-                <div class="publication-item">
+                <div class="publication-item" id="icsr2025">
                     <div class="publication-title">A Cognitive Architecture for Embodied AI based on LLM Common-sense Knowledge</div>
                     <div class="publication-authors">Alessio Saladino, Michele Brienza, Vincenzo Suriani, Domenico Daniele Bloisi, Luca Iocchi</div>
                     <div class="publication-venue">International Conference on Social Robotics (ICSR)</div>
@@ -613,10 +644,12 @@
                     <div class="publication-abstract">
                         The increased performance of LLMs has allowed them to be employed in a wide variety of language-related tasks. In this work, we propose a robot-agnostic Cognitive Architecture for Human-Robot Interaction (HRI) that allows the robot on which it is mounted to reason about its embodiment and the environment around it to decide how to act during interactions with humans. Our architecture includes a long-term memory, which allows the robot to remember past information, and a series of modules called Supervisors. The supervisors role is to orchestrate the interaction process in order to ensure that the robot's behavior does not diverge from the desired one, respecting security criteria that depend on different factors, such as the domain in which the robot is located, the users, and the robot embodiment. To highlight the adaptability of our architecture, we tested it on four different robots, each with a different set of skills. We evaluated this architecture during a dialogue between two robots, NAO and SMARRtino, in which they had to reason about their embodiment and explain to each other what they can do with it.
                     </div>
-                    <a href="https://iris.unibas.it/handle/11563/204559" target="_blank" class="publication-link">View Publication</a>
+                    <a href="publications/ICSR_2025.pdf" class="download-btn" download>Download preprint</a>
+
+                    <!-- <a href="https://iris.unibas.it/handle/11563/204559" target="_blank" class="publication-link">View Publication</a> -->
                 </div>
 
-                <div class="publication-item">
+                <div class="publication-item" id="ecmr2025">
                     <div class="publication-title">A Use Case of Natural Language Programming for Industrial Robots</div>
                     <div class="publication-authors">Alessio Saladino, Luca Iocchi, Vincenzo Agostiniano, Pieter Saveyn</div>
                     <div class="publication-venue">European Conference on Mobile Robots (ECMR)</div>
@@ -624,7 +657,8 @@
                     <div class="publication-abstract">
                         Recent advances in Large Language Models (LLMs) have enabled their use in natural language tasks across various domains, including robotics. Recent studies have extensively explored the integration of LLMs with social robots, highlighting how their ability to generate human-like language can lead to more natural, coherent, and effective interactions with people. In industrial settings, combining LLMs and other AI technologies with collaborative or industrial robots can support the development of more intelligent robotic behaviors, ultimately improving task execution efficiency. Previous research has demonstrated that it is possible to integrate LLMs and vision-based LLMs to perform robotic tasks described using natural language. Moreover, LLMs have demonstrated the ability to convert natural language into low-level actions that enable the execution of industrial tasks. LLMs have limitations, such as biased outputs, hallucinations, lack of context, and no persistent memory, making adaptation to specific environments challenging. To address this, the authors previously developed a cognitive architecture using LLMs and common sense knowledge to process semi-structured data via modular components (Supervisors), utilizing prompt engineering. Although this architecture was originally designed for general interaction scenarios, in this work, we aim to explore its integration within an industrial context. Unlike social environments, which require the robot to be capable of handling social behaviors and intents, here the robot is required to understand and execute complex tasks. To achieve its goals, the robot must be capable of understanding the human expert’s requirements and feedback expressed in natural language. It must also be capable of reason and understand how to comply with specified constraints and avoid diverging from the human-imposed goal. 
                     </div>
-                    <a href="https://iris.uniroma1.it/handle/11573/1750041" target="_blank" class="publication-link">View Publication</a>
+                    <a href="publications/ECMR_2025.pdf" class="download-btn" download>Download preprint</a>
+                    <!-- <a href="https://iris.uniroma1.it/handle/11573/1750041" target="_blank" class="publication-link">View Publication</a> -->
                 </div>
             </div>
         </div>
@@ -666,11 +700,24 @@ These theses I have co-supervised are presented below.
                     <div class="thesis-info">
                         <div class="thesis-title">Enhancing Human–Robot Interaction with Personality and
 Individual Preferences</div>
-                        <div class="thesis-author">Alessia Tancredi</div>
-
-                        <div> The thesis describes a human-robot verbal interaction framework that integrates natural language processing with movement, facial expressions, and visual perception to enable fluent, context-aware communication in a social robot. To overcome the impersonal nature of standard LLM-driven robots, the work introduces a personality and preference model. This model allows the robot to embody a distinct character (e.g., reserved or extroverted) and maintain consistent likes and dislikes, influencing both its verbal and non-verbal behavior. The integration of this personality model aims to make the robot a more engaging, relatable, and socially present partner capable of fostering deeper user connection.</div>
+                        <!-- <div class="thesis-author">Alessia Tancredi</div> -->
+                        <div class="thesis-author">Abstract</div>
+                        <div>This thesis presents a human–robot verbal interaction framework that combines natural language
+processing with movement control, facial expressions, and real-time visual perception, enabling a
+social robot to communicate fluently, respond accurately to environmental questions, and adapt
+its physical behavior to the context. While large language models (LLMs) integrated into robots
+excel at providing factual information and executing contextually appropriate actions, they
+typically avoid expressing opinions, emotions, or preferences, resulting in neutral and impersonal
+interactions.
+To address this limitation, this work introduces a personality and preference model that allows
+each robot to embody a distinct character, such as being more reserved or more extroverted,
+and to maintain consistent likes, dislikes, and conversational styles. These traits influence both
+verbal and non-verbal communication, ensuring that the robot’s behavior reflects its personality
+in a coherent and believable manner. By integrating this model into the multimodal interaction
+framework, the robot becomes a more engaging, relatable, and socially present partner, capable
+of fostering deeper user connection and more natural long-term interaction.</div>
                     </div>
-                    <a href="supervised_thesis/Tancredi.pdf" class="download-btn" download>Download PDF</a>
+                    <!-- <a href="supervised_thesis/Tancredi.pdf" class="download-btn" download>Download PDF</a> -->
                 </div>
 
 
@@ -678,21 +725,52 @@ Individual Preferences</div>
                     <div class="thesis-info">
                         <div class="thesis-title">Active Vision for Cognitive Human-Robot Interaction
 (HRI)</div>
-                        <div class="thesis-author">Niccolò Piraino</div>
-
-                        <div>This thesis extends a proven human-robot verbal interaction framework by integrating visual capabilities to address its major limitation: a lack of real-time environmental awareness. New modules utilize real-time visual data to support the interaction, aid in understanding the robot's internal state, and identify safety violations. This extension significantly improves response accuracy regarding the environment, enhances utility in context-dependent tasks like object search, and transforms the robot into a more active agent capable of proactively gathering information or initiating contact.</div>
+                        <!-- <div class="thesis-author">Niccolò Piraino</div> -->
+                        <div class="thesis-author">Abstract</div>
+                        <div>In this thesis, an extension of a human-robot verbal interaction framework is pre-
+sented through the integration of visual capabilities. The previous framework has
+proven effective in generating responses to user questions that are unbiased, free
+from hallucinations, and socially appropriate. It is also able to select suitable robot
+movements and facial expressions in line with the context of the interaction. How-
+ever, a major limitation emerges: the system lacks awareness of the environment
+surroundings beyond what the user provides, what is stored in internal memory,
+or what is passed at the code level. This work addresses this issue by enhancing
+the original structure with new modules capable of using real-time environmental
+information to support both interaction and the understanding of internal state or
+safety violations.
+This extension not only brings significant improvements to the quality of in-
+teraction, allowing the robot to respond more accurately to questions about its
+environment, but also enhances its usefulness in everyday tasks involving environ-
+mental context, such as object search. Moreover, it transforms the robot into a
+more active agent, capable of deciding when to use the camera to take dditional
+information or start a contact with the usergoing to scan the environment to identify
+them when it is not immediately visible.</div>
                     </div>
-                    <a href="supervised_thesis/Piraino.pdf" class="download-btn" download>Download PDF</a>
+                    <!-- <a href="supervised_thesis/Piraino.pdf" class="download-btn" download>Download PDF</a> -->
                 </div>
 
                 <div class="thesis-item">
                     <div class="thesis-info">
                         <div class="thesis-title">An innovative architecture for enhancing social
 robot abilities by exploiting LLM processing</div>
-                        <div class="thesis-author">Leonardo Montella</div>
-                        <div>This thesis proposes a new method to enhance human-robot communication using Large Language Models (LLMs). The system includes an innovative module for dynamic robot movement control and a facial expressions system to ensure actions and emotions are contextually appropriate, safe, and clearly understood. A key innovation is using LLMs to govern movements and expressions, including subtle "breathing" motions, making the robot an embodiment of the LLM that understands its physical presence and social status through supervised prompts. The result is a more lifelike, responsive, and engaging interaction through contextualized and expressive communication.</div>
+                        <!-- <div class="thesis-author">Leonardo Montella</div> -->
+                         <div class="thesis-author">Abstract</div>
+                        <div>This thesis presents a human–robot verbal interaction framework that combines natural language
+processing with movement control, facial expressions, and real-time visual perception, enabling a
+social robot to communicate fluently, respond accurately to environmental questions, and adapt
+its physical behavior to the context. While large language models (LLMs) integrated into robots
+excel at providing factual information and executing contextually appropriate actions, they
+typically avoid expressing opinions, emotions, or preferences, resulting in neutral and impersonal
+interactions.
+To address this limitation, this work introduces a personality and preference model that allows
+each robot to embody a distinct character, such as being more reserved or more extroverted,
+and to maintain consistent likes, dislikes, and conversational styles. These traits influence both
+verbal and non-verbal communication, ensuring that the robot’s behavior reflects its personality
+in a coherent and believable manner. By integrating this model into the multimodal interaction
+framework, the robot becomes a more engaging, relatable, and socially present partner, capable
+of fostering deeper user connection and more natural long-term interaction.</div>
                     </div>
-                    <a href="supervised_thesis/Montella.pdf" class="download-btn" download>Download PDF</a>
+                    <!-- <a href="supervised_thesis/Montella.pdf" class="download-btn" download>Download PDF</a> -->
                 </div>
                 
                 
